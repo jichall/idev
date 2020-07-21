@@ -3,46 +3,47 @@ package parser
 import (
 	"encoding/json"
 	"io/ioutil"
-	"log"
+	"path"
 )
 
 // Parse ...
-func Parse(filename string) (*ServerCollection, error) {
-	data, err := ioutil.ReadFile(filename)
+func Parse(folder string) (ServerCollection, error) {
+
+	files, err := ioutil.ReadDir(folder)
 
 	if err != nil {
 		return nil, err
 	}
 
-	var collection *ServerCollection
+	collection := make(ServerCollection)
 
-	var objects interface{}
-	err = json.Unmarshal(data, &objects)
+	for _, file := range files {
+		var s Server
 
-	if err != nil {
-		return nil, err
-	}
-
-	// ensure it's an array
-	array := objects.([]interface{})
-
-	for _, object := range array {
-		//
-		raw := object.(Server)
+		b, err := ioutil.ReadFile(path.Join(folder, file.Name()))
 
 		if err != nil {
 			return nil, err
+		}
+
+		err = json.Unmarshal(b, &s)
+
+		if err != nil {
+			return nil, err
+		}
+
+		if collection[s.Hostname] != nil {
+			collection[s.Hostname].CPU = append(collection[s.Hostname].CPU, s.CPU.Value)
+			collection[s.Hostname].MemoryUsage = append(collection[s.Hostname].MemoryUsage, s.MemoryUsage.Value)
+			collection[s.Hostname].DiskUsage = append(collection[s.Hostname].DiskUsage, s.DiskUsage.Value)
 		} else {
-			log.Printf("%v", raw)
-			/*var server Server
-
-			err = json.Unmarshal(raw, &server)
-
-			if err != nil {
-				return nil, err
+			collection[s.Hostname] = &Data{
+				CPU:         []float64{s.CPU.Value},
+				MemorySize:  s.MemorySize.Value,
+				MemoryUsage: []float64{s.MemoryUsage.Value},
+				DiskSize:    s.DiskSize.Value,
+				DiskUsage:   []float64{s.DiskUsage.Value},
 			}
-
-			collection = append(collection, server)*/
 		}
 	}
 

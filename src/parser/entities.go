@@ -1,46 +1,31 @@
 package parser
 
-/*{
-	"hostname": "server7",
-	"cpu_load": {
-	 "Value": 0.5627961727877718,
-	 "Unit": "%"
-	},
-	"memory_size": {
-	 "Value": 16,
-	 "Unit": "GB"
-	},
-	"memory_usage": {
-	 "Value": 5.881018176090025,
-	 "Unit": "GB"
-	},
-	"disk_size": {
-	 "Value": 100,
-	 "Unit": "GB"
-	},
-	"disk_usage": {
-	 "Value": 33.89572263431528,
-	 "Unit": "GB"
-	}
-   },*/
-
 type (
-	// Server ...
+	// Server is the abstraction of the server object inside a JSON.
 	Server struct {
 		Hostname    string      `json:"hostname"`
-		CPU         ServerParam `json:"cpu_load"`
-		MemorySize  ServerParam `json:"memory_size"`
-		MemoryUsage ServerParam `json:"memory_usage"`
-		DiskSize    ServerParam `json:"disk_size"`
-		DiskUsage   ServerParam `json:"disk_usage"`
+		CPU         ServerAttribute `json:"cpu_load"`
+		MemorySize  ServerAttribute `json:"memory_size"`
+		MemoryUsage ServerAttribute `json:"memory_usage"`
+		DiskSize    ServerAttribute `json:"disk_size"`
+		DiskUsage   ServerAttribute `json:"disk_usage"`
 	}
 
-	// ServerParam ...
-	ServerParam struct {
-		Value string
+	// ServerAttribute is a server attribute which is encoded in JSON
+	ServerAttribute struct {
 		Unit  string
+		Value float64
 	}
 
-	// ServerCollection ...
-	ServerCollection []Server
+	// Data ...
+	Data struct {
+		CPU []float64
+		MemorySize float64
+		MemoryUsage []float64
+		DiskSize float64
+		DiskUsage []float64
+	}
+
+	// ServerCollection maps the hostname of a server to its telemetry data
+	ServerCollection map[string]*Data
 )

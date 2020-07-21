@@ -6,7 +6,6 @@ import (
 	"os/signal"
 	"syscall"
 
-	"github.com/gorilla/handlers"
 	"github.com/gorilla/mux"
 )
 
@@ -14,12 +13,13 @@ func serve(host, port string) {
 	r := mux.NewRouter()
 	r.StrictSlash(true)
 
-	// r.HandleFunc("/v1//{h", )
+	r.HandleFunc("/v1/stats", HandleStats)
+	r.HandleFunc("/v1/health", HandleHealth)
 
 	s := http.Server{
 		Addr: host + ":" + port,
-		// FIXME: Configure the following CORS settings.
-		Handler: handlers.CORS()(r),
+		//Handler: handlers.CORS()(r),
+		Handler: r,
 	}
 
 	erro := make(chan error)
@@ -47,7 +47,6 @@ func serve(host, port string) {
 
 				os.Exit(1)
 			}
-
 			os.Exit(0)
 		}
 	}

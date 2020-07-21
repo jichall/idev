@@ -1,6 +1,10 @@
 package main
 
 import (
+	"flag"
+	"log"
+	"os"
+
 	"github.com/rafaelcn/jeolgyu"
 
 	"github.com/jichall/idev/src/parser"
@@ -9,22 +13,25 @@ import (
 var (
 	logger *jeolgyu.Jeolgyu
 
-	inputFile = flag.String("input", "assets/data.json", "")
+	collection parser.ServerCollection
 
+	folder = flag.String("folder", "./data", "The folder to where look for .json files")
 	host = flag.String("host", "localhost", "Where to serve the application")
-	port = flag.Int("port", "8080", "What port to serve the application")
-
-	isProduction = flag.Bool("production", false, "Is the app running in production environment?")
+	port = flag.String("port", "8080", "What port to serve the application")
+	production = flag.Bool("production", false, "Is the app running in production environment?")
 )
 
 func main() {
+	flag.Parse()
+
 	var st = jeolgyu.SinkBoth
 
 	if *production {
 		st = jeolgyu.SinkFile
 	}
 
-	logger, err := jeolgyu.New(jeolgyu.Settings{
+	var err error
+	logger, err = jeolgyu.New(jeolgyu.Settings{
 		Filepath: "log",
 		Filename: "",
 		SinkType: st,
@@ -35,7 +42,7 @@ func main() {
 	}
 
 	// initialize data input processing
-	collection, err := parser.Parse(*inputFile)
+	collection, err = parser.Parse(*folder)
 
 	if err != nil {
 		logger.Error("Failed to process input file. Reason %v", err)
