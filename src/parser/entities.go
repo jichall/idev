@@ -39,6 +39,8 @@ type (
 			Mean float64
 			Mode []float64
 		}
+
+		Usage float64
 	}
 
 	// ServerCollection maps the hostname of a server to its telemetry data
