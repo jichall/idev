@@ -21,7 +21,7 @@ func serve(host, port string) {
 
 	// route created to satisfy the prerequisites of the challenge as it was
 	// unclear on the README description.
-	r.HandleFunc("/spec", HandleSpecific)
+	r.HandleFunc("/spec", HandleSpecific).Methods("POST")
 
 	s := http.Server{
 		Addr: host + ":" + port,
