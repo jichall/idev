@@ -6,7 +6,8 @@ import (
 	"path"
 )
 
-// Parse ...
+// Parse reads a folder of JSON files, processing its contents into a
+// ServerCollection.
 func Parse(folder string) (ServerCollection, error) {
 
 	files, err := ioutil.ReadDir(folder)
