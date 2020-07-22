@@ -48,7 +48,7 @@ in your terminal. If you turned the production mode on you won't see any output
 sent to the stdout, it will instead be sent to a log file under a log folder
 created by the binary with the name given by the time of execution.
 
-## Routes
+### Routes
 
 The available routes are defined below.
 
@@ -70,7 +70,7 @@ status of the server(s). The response of a call to
     "CPU":{"mean":0.5030763415151056,"mode":[]},
     "Memory":{"mean":4.960234299570407,"mode":[]},
     "Disk":{"mean":25.77459401368746,"mode":[]},
-    "usage":0.3987051870811867
+    "Usage":0.3987051870811867
 }
 ```
 
@@ -88,19 +88,18 @@ to send the required data as follows:
     "CPU":{"mean":0.5030763415151056,"mode":[]},
     "Memory":{"mean":4.960234299570407,"mode":[]},
     "Disk":{"mean":25.77459401368746,"mode":[]},
-    "usage":0.3987051870811867
+    "Usage":0.3987051870811867
 }
 ```
 
-## Responses
+### Responses
 
 The mean values of a response are given in the original processed units, that
 is, the CPU is given in percentage, the memory is given in GB and the disk is
 also given in GB.
 
-The exception for that is the `Usage` key of the JSON, that is given in an
-interval of [0, 1] representing the usage of the resources of that server.
-
+The exception for that is the `Usage` value, that is given in an interval of [0,
+1] representing the usage of the resources of that server.
 
 # The development
 
