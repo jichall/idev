@@ -14,10 +14,10 @@ func serve(host, port string) {
 	r.StrictSlash(true)
 
 	r.HandleFunc("/servers/raw", HandleRaw).Methods("GET")
-	r.HandleFunc("/servers/raw/{server}", HandleRaw).Methods("GET")
+	r.HandleFunc("/servers/raw/{hostname}", HandleRaw).Methods("GET")
 
 	r.HandleFunc("/servers", HandleAll).Methods("GET")
-	r.HandleFunc("/servers/{server}", HandleServer).Methods("GET")
+	r.HandleFunc("/servers/{hostname}", HandleServer).Methods("GET")
 
 	// route created to satisfy the prerequisites of the challenge as it was
 	// unclear on the README description.
