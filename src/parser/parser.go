@@ -37,7 +37,7 @@ func Parse(folder string) (ServerCollection, error) {
 			collection[s.Hostname].MemoryUsage = append(collection[s.Hostname].MemoryUsage, s.MemoryUsage.Value)
 			collection[s.Hostname].DiskUsage = append(collection[s.Hostname].DiskUsage, s.DiskUsage.Value)
 		} else {
-			collection[s.Hostname] = &Data{
+			collection[s.Hostname] = &ServerData{
 				CPU:         []float64{s.CPU.Value},
 				MemorySize:  s.MemorySize.Value,
 				MemoryUsage: []float64{s.MemoryUsage.Value},

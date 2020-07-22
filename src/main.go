@@ -49,6 +49,9 @@ func main() {
 		os.Exit(1)
 	}
 
+	// process calculates each server usage metric
+	process(collection)
+
 	// initialize HTTP server
 	serve(*host, *port)
 }

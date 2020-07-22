@@ -3,7 +3,7 @@ package parser
 type (
 	// Server is the abstraction of the server object inside a JSON.
 	Server struct {
-		Hostname    string      `json:"hostname"`
+		Hostname    string          `json:"hostname"`
 		CPU         ServerAttribute `json:"cpu_load"`
 		MemorySize  ServerAttribute `json:"memory_size"`
 		MemoryUsage ServerAttribute `json:"memory_usage"`
@@ -17,15 +17,30 @@ type (
 		Value float64
 	}
 
-	// Data ...
-	Data struct {
-		CPU []float64
-		MemorySize float64
+	// ServerData ...
+	ServerData struct {
+		CPU         []float64
+		MemorySize  float64
 		MemoryUsage []float64
-		DiskSize float64
-		DiskUsage []float64
+		DiskSize    float64
+		DiskUsage   []float64
+
+		CPUStats struct {
+			Mean float64
+			Mode []float64
+		}
+
+		MemoryStats struct {
+			Mean float64
+			Mode []float64
+		}
+
+		DiskStats struct {
+			Mean float64
+			Mode []float64
+		}
 	}
 
 	// ServerCollection maps the hostname of a server to its telemetry data
-	ServerCollection map[string]*Data
+	ServerCollection map[string]*ServerData
 )

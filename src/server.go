@@ -13,8 +13,12 @@ func serve(host, port string) {
 	r := mux.NewRouter()
 	r.StrictSlash(true)
 
-	r.HandleFunc("/v1/stats", HandleStats)
-	r.HandleFunc("/v1/health", HandleHealth)
+	r.HandleFunc("/v1/servers", HandleAll)
+	r.HandleFunc("/v1/servers/{server}", HandleServer)
+
+	// route created to satisfy the prerequisites of the challenge as it was
+	// unclear on the README description.
+	r.HandleFunc("/v1/spec", HandleSpecific)
 
 	s := http.Server{
 		Addr: host + ":" + port,

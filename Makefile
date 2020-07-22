@@ -6,7 +6,7 @@
 #
 
 CC=`which go`
-SRC=src/main.go src/server.go src/api.go
+SRC=src/main.go src/server.go src/api.go src/process.go src/message.go
 
 OUT=./bin/stats.out
 

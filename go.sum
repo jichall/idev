@@ -2,6 +2,8 @@ github.com/gorilla/handlers v1.4.2 h1:0QniY0USkHQ1RGCLfKxeNHK9bkDHGRYGNDFBCS+YAR
 github.com/gorilla/handlers v1.4.2/go.mod h1:Qkdc/uu4tH4g6mTK6auzZ766c4CA0Ng8+o/OAirnOIQ=
 github.com/gorilla/mux v1.7.4 h1:VuZ8uybHlWmqV03+zRzdwKL4tUnIp1MAQtp1mIFE1bc=
 github.com/gorilla/mux v1.7.4/go.mod h1:DVbg23sWSpFRCP0SfiEN6jmj59UnW/n46BH5rLB71So=
+github.com/montanaflynn/stats v0.6.3 h1:F8446DrvIF5V5smZfZ8K9nrmmix0AFgevPdLruGOmzk=
+github.com/montanaflynn/stats v0.6.3/go.mod h1:wL8QJuTMNUDYhXwkmfOly8iTdp5TEcJFWZD2D7SIkUc=
 github.com/rafaelcn/jeolgyu v0.0.0-20200608173507-8098de9a5b15 h1:3lT9jzeDm8AjPIJrEHK6/Tz3KLzkwgU4nqBnnZ344Hs=
 github.com/rafaelcn/jeolgyu v0.0.0-20200608173507-8098de9a5b15/go.mod h1:O5Ngy0Ttx/JznVckj+/IJofpgCd2LA9UV5jpeIHV7cs=
 github.com/rafaelcn/jeolgyu v1.0.0 h1:VcA9KieFAGe8bMp8D1AxCJP1aPPo9AoOLq5rT52lwkg=
