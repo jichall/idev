@@ -13,12 +13,15 @@ func serve(host, port string) {
 	r := mux.NewRouter()
 	r.StrictSlash(true)
 
-	r.HandleFunc("/v1/servers", HandleAll)
-	r.HandleFunc("/v1/servers/{server}", HandleServer)
+	r.HandleFunc("/servers/raw", HandleRaw).Methods("GET")
+	r.HandleFunc("/servers/raw/{server}", HandleRaw).Methods("GET")
+
+	r.HandleFunc("/servers", HandleAll).Methods("GET")
+	r.HandleFunc("/servers/{server}", HandleServer).Methods("GET")
 
 	// route created to satisfy the prerequisites of the challenge as it was
 	// unclear on the README description.
-	r.HandleFunc("/v1/spec", HandleSpecific)
+	r.HandleFunc("/spec", HandleSpecific)
 
 	s := http.Server{
 		Addr: host + ":" + port,
