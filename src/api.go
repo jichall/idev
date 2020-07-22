@@ -8,7 +8,10 @@ import (
 	"github.com/gorilla/mux"
 )
 
-// HandleSpecific ...
+// HandleSpecific was created because on the challenge description it is not
+// clear what method and what payload (if any) is sent with the request and I
+// did this as a filler for what I found it was related to the description
+// provided.
 func HandleSpecific(w http.ResponseWriter, r *http.Request) {
 	body, err := ioutil.ReadAll(r.Body)
 
