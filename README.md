@@ -27,6 +27,10 @@ To build it on windows you can simply invoke `go build -o bin/stats.exe
 src/main.go src/api.go src/server.go` and it will generate you a binary under
 **bin/**.
 
+Although you could create a binary on windows the software will only work after
+pre processing the data. Therefore you'll need `jq`, that doesn't comes with
+windows natively.
+
 # Documentation
 
 To use the software you have to build the application it and prepare the data.
