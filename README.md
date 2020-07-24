@@ -114,3 +114,9 @@ have to use a lot of `map[string]interface{}` and then convert the data to the
 one needed. It would increase code size by a lot and would be a headache to
 maintain.
 
+With this new architecture one could use concurrency to calculate the
+statistical data for each server although this comes with its own problems as it
+should be used with a thread safe map access using `sync.Map` or atomic
+operations and it would possibly slow the application as a consequence. That
+being said I chose to not go that way and used a simple map to map a hostname to
+a server data.
