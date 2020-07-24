@@ -66,7 +66,7 @@ The available routes are defined below.
 
 Each endpoint returns a JSON containing the needed information to assess the
 status of the server(s). The response of a call to
-`curl -X GET localhost:8080/servers/server` would return:
+`curl -X GET localhost:8080/servers/server0` would return:
 
 ```
 {
