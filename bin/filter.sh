@@ -8,12 +8,12 @@
 
 FILE=$1
 OUTPUT=$2
-SIZE=$(jq '. | length' $FILE)
+SIZE=$(jq '. | length' "${FILE}")
 
 for N in $(seq 0 $((SIZE-1)))
 do
     COMMAND="jq '.[${N}]' data.json"
-    SERVER=$(eval ${COMMAND})
-    echo ${SERVER} > ${OUTPUT}/data-${N}.json
+    SERVER=$(eval "${COMMAND}")
+    echo "${SERVER}" > "${OUTPUT}/data-${N}".json
     echo "Wrote data-${N}.json in ${OUTPUT}"
 done
