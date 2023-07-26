@@ -20,3 +20,9 @@
 
 # Processed JSON files
 bin/data/*.json
+
+#
+# Other kinds of files
+#
+*.pdf
+*.zip
