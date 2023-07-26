@@ -12,9 +12,9 @@ func process(servers parser.ServerCollection) {
 }
 
 func calculate(hostname string, server *parser.ServerData) {
-	// I could arrays to represent data which would make the code smaller but I
-	// think it would make readability worse for new comers.
-	
+	// I could use arrays to represent data which would make the code smaller
+	// but I think it would make readability worse for new comers.
+
 	cpuMean, err := stats.Mean(server.CPU)
 	memoryMean, err := stats.Mean(server.MemoryUsage)
 	diskMean, err := stats.Mean(server.DiskUsage)
